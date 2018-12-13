@@ -61,6 +61,9 @@ pub enum ErrorKind {
 
     #[fail(display = "Could not update module")]
     UpdateModule(String),
+
+    #[fail(display = "Could not prepare update for module")]
+    PrepareUpdateModule(String),
 }
 
 impl Fail for Error {
