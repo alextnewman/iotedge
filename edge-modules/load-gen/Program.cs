@@ -64,7 +64,7 @@ namespace LoadGen
                     timers.Add(
                         Settings.Current.TwinUpdateFrequency,
                         Settings.Current.JitterFactor,
-                        () => GenTwinUpdate(client));
+                        () => GenTwinUpdate(client, batchId));
                     timers.Start();
 
                     (
@@ -126,11 +126,19 @@ namespace LoadGen
             }
         }
 
-        static async void GenTwinUpdate(ModuleClient client)
+        static async void GenTwinUpdate(ModuleClient client, Guid batchId)
         {
             var twin = new TwinCollection();
-            twin["messagesSent"] = MessageIdCounter;
-            await client.UpdateReportedPropertiesAsync(twin).ConfigureAwait(false);
+            long sequenceNumber = MessageIdCounter;
+            twin["messagesSent"] = sequenceNumber;
+            try
+            {
+                await client.UpdateReportedPropertiesAsync(twin).ConfigureAwait(false);
+            }
+            catch (Exception e)
+            {
+                Log.Error($"Sequence number {sequenceNumber}, BatchId: {batchId.ToString()} {e}");
+            }
         }
 
         static ILoggerFactory InitLogger()
