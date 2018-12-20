@@ -74,7 +74,7 @@ $SRC_STRESS_DIR=Join-Path $BuildRepositoryLocalPath "stress"
 $PUB_STRESS_DIR = Join-Path $PUBLISH_FOLDER "stress"
 $SRC_BIN_DIR = Join-Path $BuildRepositoryLocalPath "bin"
 $PUB_BIN_DIR = Join-Path $PUBLISH_FOLDER "bin"
-$SRC_E2E_TEMPLATES_DIR = Join-Path $BuildRepositoryLocalPath "smoke/IotEdgeQuickstart/e2e_deployment_files"
+$SRC_E2E_TEMPLATES_DIR = Join-Path $BuildRepositoryLocalPath "e2e_deployment_files"
 $PUB_E2E_TEMPLATES_DIR = Join-Path $PUBLISH_FOLDER "e2e_deployment_files"
 $TEST_SCRIPTS_DIR = Join-Path $RELEASE_TESTS_FOLDER "scripts"
 
