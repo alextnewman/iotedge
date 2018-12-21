@@ -24,7 +24,7 @@ impl<E> TestRegistry<E> {
 
 impl<E> ModuleRegistry for TestRegistry<E>
 where
-    E: Fail + Send + Sync + Clone,
+    E: Clone + Fail + Send + Sync,
 {
     type Error = E;
     type PullFuture = FutureResult<(), Self::Error>;
@@ -33,15 +33,15 @@ where
 
     fn pull(&self, _config: &Self::Config) -> Self::PullFuture {
         match self.err {
-            None => future::ok(()),
             Some(ref e) => future::err(e.clone()),
+            None => future::ok(()),
         }
     }
 
     fn remove(&self, _name: &str) -> Self::RemoveFuture {
         match self.err {
-            None => future::ok(()),
             Some(ref e) => future::err(e.clone()),
+            None => future::ok(()),
         }
     }
 }
@@ -106,7 +106,7 @@ pub struct TestRuntime<E> {
     registry: TestRegistry<E>,
 }
 
-impl<E: Fail + Clone> TestRuntime<E> {
+impl<E> TestRuntime<E> where E: Clone + Fail {
     pub fn new(module: Result<TestModule<E>, E>) -> Self {
         TestRuntime {
             registry: TestRegistry::new(module.as_ref().err().cloned()),

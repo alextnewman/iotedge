@@ -157,7 +157,7 @@ mod tests {
             .and_then(|b| {
                 let error: ErrorResponse = serde_json::from_slice(&b).unwrap();
                 assert_eq!(
-                    "Could not prepare update for module\n\tcaused by: General error",
+                    "Could not prepare update for module \"test-module\"\n\tcaused by: General error",
                     error.message()
                 );
                 Ok(())

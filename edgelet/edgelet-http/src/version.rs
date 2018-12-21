@@ -5,7 +5,7 @@ use std::str::FromStr;
 
 pub const API_VERSION: Version = Version::Version2018_12_30;
 
-#[derive(PartialOrd, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialOrd, PartialEq)]
 pub enum Version {
     Version2018_06_28,
     Version2018_12_30,

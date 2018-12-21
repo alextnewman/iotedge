@@ -59,10 +59,10 @@ pub enum ErrorKind {
     #[fail(display = "Could not start management service")]
     StartService,
 
-    #[fail(display = "Could not update module")]
+    #[fail(display = "Could not update module {:?}", _0)]
     UpdateModule(String),
 
-    #[fail(display = "Could not prepare update for module")]
+    #[fail(display = "Could not prepare update for module {:?}", _0)]
     PrepareUpdateModule(String),
 }
 

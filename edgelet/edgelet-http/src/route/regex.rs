@@ -114,12 +114,12 @@ impl Recognizer for RegexRecognizer {
     fn recognize(
         &self,
         method: &Method,
-        api_version: &Version,
+        api_version: Version,
         path: &str,
     ) -> Result<HandlerParamsPair<Self::Parameters>, StatusCode> {
         let routes = self.routes.get(method).ok_or(StatusCode::NOT_FOUND)?;
         for route in routes {
-            if api_version >= &route.version {
+            if api_version >= route.version {
                 if let Some(params) = match_route(&route.pattern, path) {
                     return Ok((&*route.handler, params));
                 }

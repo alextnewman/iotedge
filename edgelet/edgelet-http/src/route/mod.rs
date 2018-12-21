@@ -52,7 +52,7 @@ pub trait Recognizer {
     fn recognize(
         &self,
         method: &Method,
-        version: &Version,
+        version: Version,
         path: &str,
     ) -> Result<HandlerParamsPair<Self::Parameters>, StatusCode>;
 }
@@ -161,16 +161,12 @@ where
                 let mut query = parse_query(query.as_bytes());
                 let (_, api_version) = query.find(|&(ref key, _)| key == "api-version")?;
 
-                let api_version = api_version.into_owned().parse::<Version>();
-                match api_version {
-                    Ok(api_version) => Some(api_version),
-                    Err(_) => None,
-                }
+                api_version.parse().ok()
             })
         };
 
         match api_version {
-            Some(ref api_version) => {
+            Some(api_version) => {
                 let method = req.method().clone();
                 let path = req.uri().path().to_owned();
                 match self.inner.recognize(&method, api_version, &path) {
