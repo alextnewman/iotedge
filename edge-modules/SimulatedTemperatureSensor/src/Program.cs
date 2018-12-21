@@ -27,6 +27,7 @@ namespace SimulatedTemperatureSensor
             new ExponentialBackoff(RetryCount, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(60), TimeSpan.FromSeconds(4));
         static readonly Random Rnd = new Random();
         static readonly AtomicBoolean Reset = new AtomicBoolean(false);
+        static readonly Guid BatchId = Guid.NewGuid();
 
         public enum ControlCommandEnum { Reset = 0, Noop = 1 };
 
@@ -222,6 +223,8 @@ namespace SimulatedTemperatureSensor
 
                 string dataBuffer = JsonConvert.SerializeObject(tempData);
                 var eventMessage = new Message(Encoding.UTF8.GetBytes(dataBuffer));
+                eventMessage.Properties.Add("sequenceNumber", count.ToString());
+                eventMessage.Properties.Add("batchId", BatchId.ToString());
                 Console.WriteLine($"\t{DateTime.Now.ToLocalTime()}> Sending message: {count}, Body: [{dataBuffer}]");
 
                 await moduleClient.SendEventAsync("temperatureOutput", eventMessage);

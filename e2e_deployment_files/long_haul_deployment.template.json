@@ -71,8 +71,16 @@
             "status": "running",
             "restartPolicy": "always",
             "settings": {
-              "image": "edgebuilds.azurecr.io/microsoft/azureiotedge-simulated-temperature-sensor:<Build.BuildNumber>-linux-<Architecture>",
+              "image": "edgebuilds.azurecr.io/microsoft/azureiotedge-simulated-temperature-sensor:<Build.BuildNumber>-linux-amd64",
               "createOptions": ""
+            },
+            "env": {
+              "MessageCount": {
+                "value": "-1"
+              },
+              "ClientTransportType": {
+                "value": "<LoadGen.TransportType>"
+              }
             }
           },
           "tempFilter": {
@@ -83,10 +91,13 @@
             "env": {
               "TemperatureThreshold": {
                 "value": "19"
+              },
+              "ClientTransportType": {
+                "value": "<LoadGen.TransportType>"
               }
             },
             "settings": {
-              "image": "edgebuilds.azurecr.io/microsoft/azureiotedge-temperature-filter:<Build.BuildNumber>-linux-<Architecture>",
+              "image": "edgebuilds.azurecr.io/microsoft/azureiotedge-temperature-filter:<Build.BuildNumber>-linux-amd64",
               "createOptions": ""
             }
           },
@@ -168,7 +179,9 @@
         "routes": {
           "upstreamLoadGen1": "FROM /messages/modules/loadGen1/outputs/output1 INTO $upstream",
           "upstreamLoadGen2": "FROM /messages/modules/loadGen2/outputs/output1 INTO $upstream",
-          "upstreamLoadGen3": "FROM /messages/modules/loadGen3/outputs/output1 INTO $upstream"
+          "upstreamLoadGen3": "FROM /messages/modules/loadGen3/outputs/output1 INTO $upstream",
+          "TempFilterToCloud": "FROM /messages/modules/tempFilter/outputs/* INTO $upstream",
+          "TempSensorToTempFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/tempFilter/inputs/input1\")"
         },
         "storeAndForwardConfiguration": {
           "timeToLiveSecs": 86400
