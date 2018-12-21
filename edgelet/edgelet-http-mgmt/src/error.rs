@@ -53,6 +53,9 @@ pub enum ErrorKind {
     #[fail(display = "State not modified")]
     NotModified,
 
+    #[fail(display = "Could not prepare update for module {:?}", _0)]
+    PrepareUpdateModule(String),
+
     #[fail(display = "{}", _0)]
     RuntimeOperation(RuntimeOperation),
 
@@ -61,9 +64,6 @@ pub enum ErrorKind {
 
     #[fail(display = "Could not update module {:?}", _0)]
     UpdateModule(String),
-
-    #[fail(display = "Could not prepare update for module {:?}", _0)]
-    PrepareUpdateModule(String),
 }
 
 impl Fail for Error {

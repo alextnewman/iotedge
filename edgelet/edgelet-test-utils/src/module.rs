@@ -11,7 +11,7 @@ use futures::stream;
 use futures::IntoFuture;
 use hyper::Body;
 
-#[derive(Clone, Debug, Default)]
+#[derive(Clone, Debug)]
 pub struct TestRegistry<E> {
     err: Option<E>,
 }
