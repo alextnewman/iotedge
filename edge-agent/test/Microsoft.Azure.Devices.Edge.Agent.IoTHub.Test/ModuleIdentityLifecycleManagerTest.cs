@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Devices.Edge.Agent.IoTHub.Test
     using System.Text;
     using System.Threading.Tasks;
     using Microsoft.Azure.Devices.Edge.Agent.Core;
-    using Microsoft.Azure.Devices.Edge.Agent.Core.Test;
+    using Microsoft.Azure.Devices.Edge.Agent.TestLib;
     using Microsoft.Azure.Devices.Edge.Util.Test.Common;
     using Moq;
     using Newtonsoft.Json;

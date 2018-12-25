@@ -6,6 +6,7 @@ namespace Microsoft.Azure.Devices.Edge.Agent.Core.Test
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using Microsoft.Azure.Devices.Edge.Agent.Core;
+    using Microsoft.Azure.Devices.Edge.Agent.TestLib;
     using Microsoft.Azure.Devices.Edge.Util.Test.Common;
     using Xunit;
 

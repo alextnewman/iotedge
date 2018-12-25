@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 
-namespace Microsoft.Azure.Devices.Edge.Agent.Core.Test
+namespace Microsoft.Azure.Devices.Edge.Agent.TestLib
 {
     using System;
     using System.Collections.Generic;

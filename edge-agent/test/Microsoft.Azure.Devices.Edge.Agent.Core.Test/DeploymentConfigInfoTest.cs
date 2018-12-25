@@ -4,6 +4,7 @@ namespace Microsoft.Azure.Devices.Edge.Agent.Core.Test
 {
     using System.Collections.Generic;
     using Microsoft.Azure.Devices.Edge.Agent.Core.Test.ConfigSources;
+    using Microsoft.Azure.Devices.Edge.Agent.TestLib;
     using Xunit;
 
     public class DeploymentConfigInfoTest

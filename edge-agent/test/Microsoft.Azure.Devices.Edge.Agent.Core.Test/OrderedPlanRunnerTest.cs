@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Devices.Edge.Agent.Core.Test
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Devices.Edge.Agent.Core.PlanRunners;
+    using Microsoft.Azure.Devices.Edge.Agent.TestLib;
     using Microsoft.Azure.Devices.Edge.Util;
     using Microsoft.Azure.Devices.Edge.Util.Test.Common;
     using Moq;

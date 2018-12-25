@@ -33,7 +33,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\edge-util\test\Microsoft.Azure.Devices.Edge.Util.Test.Common\Microsoft.Azure.Devices.Edge.Util.Test.Common.csproj" />
     <ProjectReference Include="..\..\src\Microsoft.Azure.Devices.Edge.Agent.Edgelet\Microsoft.Azure.Devices.Edge.Agent.Edgelet.csproj" />
-    <ProjectReference Include="..\Microsoft.Azure.Devices.Edge.Agent.Core.Test\Microsoft.Azure.Devices.Edge.Agent.Core.Test.csproj" />
+    <ProjectReference Include="..\Microsoft.Azure.Devices.Edge.Agent.TestLib\Microsoft.Azure.Devices.Edge.Agent.TestLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>

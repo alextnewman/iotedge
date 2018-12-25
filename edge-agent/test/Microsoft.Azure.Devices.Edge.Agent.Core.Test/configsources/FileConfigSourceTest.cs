@@ -8,6 +8,7 @@ namespace Microsoft.Azure.Devices.Edge.Agent.Core.Test.ConfigSources
     using System.Threading.Tasks;
     using Microsoft.Azure.Devices.Edge.Agent.Core.ConfigSources;
     using Microsoft.Azure.Devices.Edge.Agent.Core.Serde;
+    using Microsoft.Azure.Devices.Edge.Agent.TestLib;
     using Microsoft.Azure.Devices.Edge.Util.Test.Common;
     using Microsoft.Extensions.Configuration;
     using Xunit;

@@ -11,6 +11,7 @@ namespace Microsoft.Azure.Devices.Edge.Agent.Core.Test
     using Newtonsoft.Json.Linq;
     using System.Linq;
     using System.Collections.Generic;
+    using Microsoft.Azure.Devices.Edge.Agent.TestLib;
 
     [ExcludeFromCodeCoverage]
     public class TestModuleTest
